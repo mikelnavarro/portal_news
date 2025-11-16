@@ -20,7 +20,6 @@ $verificar = $conn->query("SELECT * FROM usuarios WHERE correo='$correo'");
 if ($verificar->num_rows > 0) {
 return "El usuario ya está registrado.";
 }
-
 // Insertar usuario sin cifrado (solo para entorno local)
 $sql = "INSERT INTO usuarios (nombre, correo, contrasena) VALUES ('$nombre', '$correo', '$contrasena')";
 if ($conn->query($sql)) {
