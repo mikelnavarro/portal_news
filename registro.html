@@ -6,53 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My App</title>
   <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/mensaje.css">
   <link rel="stylesheet" href="css/formularios.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="bootstrap-5.0.2-dist/css">
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/">
 </head>
 
 <body>
-  <header>
-    <h1>Página web</h1>
-    <p>Se adapta a móvil, tablet y escritorio</p>
-  </header>
-  <!-- Menu Sin Bootstrap -->
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark" id="navbar">
-    <a class="navbar-brand d-flex align-items-center" href="#Inicio">
-      <img src="digital-logo.png" alt="Logo" class="logo" />
-      <span class="ms-2">Noticias</span>
-    </a>
-    <ul class="menu">
-      <li class="nav-item">
-        <a href="pages/internacional.html">Internacional</a>
-      </li>
-      <li class="nav-item">
-        <a href=" " aria-haspopup="true" aria-expanded="false">Secciones<i class="bi bi-caret-down-fill ms-1"></i></a>
-        <ul class="sub-menu" role="menu">
-          <li class="nav-item" role="none"><a href="pages/asia.html" role="menuitem">Asia</a></li>
-          <li class="nav-item" role="none"><a href="pages/europa.html" role="menuitem">Europa</a></li>
-        </ul>
-      </li>
-      <li class="nav-item">
-        <a href="pages/opinion.html">Opinión</a>
-      </li>
-      <li class="nav-item">
-        <a href="pages/planes.html"><i class="bi bi-bag-fill"></i>Plan</a>
-      </li>
-      <li class="nav-item">
-        <a class="registro-btn" href="registro.html">Registro</a>
-      </li>
-      <li class="nav-item">
-        <a href="#" title="Ajustes de Accesibilidad">
-          <i class="bi bi-gear fs-5"></i>
-        </a>
-      </li>
-    </ul>
-  </nav>
+  <!-- Esto incluye cabecera -->
+  <!--#include virtual="header.html" -->
   <main class="container my-5">
-  <h2 class="mb-4 fw-bold border-bottom pb-2">Regístrate en nuestra web</h2>
+    <h2 class="mb-4 fw-bold border-bottom pb-2">Regístrate en nuestra web</h2>
+    <div id="mensaje" class="oculto"></div>
     <form action="procesar_.php" method="POST">
       <label>Nombre:</label>
       <input type="text" name="nombre" required><br>
@@ -85,7 +52,20 @@
           </a>
         </div>
       </section>
+      <script>
+        const params = new URLSearchParams(window.location.search);
+        const msg = document.getElementById("mensaje");
 
+        if (params.get("status") === "ok") {
+          msg.className = "ok";
+          msg.innerText = "✔ Datos guardados correctamente";
+        }
+
+        if (params.get("status") === "error") {
+          msg.className = "error";
+          msg.innerText = "❌ Error al guardar los datos";
+        }
+      </script>
       <!-- Enlaces y contacto -->
       <div class="row mt-4">
         <div class="col-md-6 col-lg-4 mb-4">

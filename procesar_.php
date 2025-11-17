@@ -15,6 +15,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 $nombre = $_POST['nombre'];
 $correo = $_POST['correo'];
 $contrasena = $_POST['contrasena'];
+} else {
+    header('Location: registro.php');
+    exit;
 }
 
 $verificar = $conn->query("SELECT * FROM usuarios WHERE correo='$correo'");
@@ -26,10 +29,11 @@ if ($verificar->num_rows > 0) {
 // Insertar usuario sin cifrado (solo para entorno local)
 $sql = "INSERT INTO usuarios (nombre, correo, contrasena) VALUES ('$nombre', '$correo', '$contrasena')";
 // Ejecutar la consulta
-if ($conn->query($sql) === TRUE) {
-    echo "Los datos han sido guardados correctamente";
+if ($sql) {
+    header('Location: registro.html?status=ok');
+    exit;
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Error: " . $sql . "<br>" . $conn->error;    
 }
 // Cerrar la conexión
 $conn->close();

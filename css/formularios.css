@@ -12,10 +12,11 @@ form {
   display: flex;
   flex-direction: column;
   background-color: white;
-  padding: 20px 30px;
-  border-radius: 10px;
-  box-shadow: 0 20px 10px rgba(0,0,0,0.1);
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 20px 20px 20px 20px rgba(0,0,0,0.1);
   width: 40%;
+  margin: 50px auto;
 }
 
 h2 {
@@ -31,7 +32,6 @@ label {
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-  width: 100%;
   padding: 8px;
   margin-top: 5px;
   border: 1px solid #ccc;
