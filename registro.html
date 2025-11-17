@@ -52,20 +52,7 @@
           </a>
         </div>
       </section>
-      <script>
-        const params = new URLSearchParams(window.location.search);
-        const msg = document.getElementById("mensaje");
 
-        if (params.get("status") === "ok") {
-          msg.className = "ok";
-          msg.innerText = "✔ Datos guardados correctamente";
-        }
-
-        if (params.get("status") === "error") {
-          msg.className = "error";
-          msg.innerText = "❌ Error al guardar los datos";
-        }
-      </script>
       <!-- Enlaces y contacto -->
       <div class="row mt-4">
         <div class="col-md-6 col-lg-4 mb-4">
@@ -100,6 +87,20 @@
       <a class="text-reset fw-bold text-decoration-none" href="#">Aviso legal</a>
     </div>
   </footer>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const msg = document.getElementById("mensaje");
+
+    if (params.get("status") === "ok") {
+      msg.className = "ok";
+      msg.innerText = "✔ Datos guardados correctamente";
+    }
+
+    if (params.get("status") === "error") {
+      msg.className = "error";
+      msg.innerText = "❌ Error al guardar los datos";
+    }
+  </script>
 </body>
 
 </html>
