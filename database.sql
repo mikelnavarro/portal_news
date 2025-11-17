@@ -1,5 +1,4 @@
 CREATE DATABASE portal_noticias;
-
 CREATE TABLE usuarios
 (
     id INT AUTO_INCREMENT,
