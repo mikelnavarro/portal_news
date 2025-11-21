@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "dweb";
+$password = "12345";
 $dbname = "portal_noticias";
 
 
@@ -20,6 +20,7 @@ $contrasena = $_POST['contrasena'];
     exit;
 }
 
+
 $verificar = $conn->query("SELECT * FROM usuarios WHERE correo='$correo'");
 if ($verificar->num_rows > 0) {
     return "El usuario ya está registrado.";
@@ -29,12 +30,14 @@ if ($verificar->num_rows > 0) {
 // Insertar usuario sin cifrado (solo para entorno local)
 $sql = "INSERT INTO usuarios (nombre, correo, contrasena) VALUES ('$nombre', '$correo', '$contrasena')";
 // Ejecutar la consulta
-if ($sql) {
+if ($conn->query($sql) === TRUE) {
+    // echo "Insercion correcta!";
     header('Location: registro.html?status=ok');
     exit;
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;    
 }
+
 // Cerrar la conexión
 $conn->close();
 ?>
